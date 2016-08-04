@@ -9,6 +9,8 @@ events {
 
 http {
   access_log '/tmp/access.log';
+  include /etc/nginx/mime.types;
+  default_type application/octet-stream;
   upstream app {
     # Path to Puma SOCK file, as defined previously
     server unix:/tmp/puma.sock fail_timeout=0;
