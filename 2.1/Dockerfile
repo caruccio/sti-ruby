@@ -38,7 +38,7 @@ COPY ./contrib/ /opt/app-root
 
 # TODO: Drop the root user and make the content of /opt/app-root owned by user 1001
 RUN chown -R 1001:0 /opt/app-root && chmod -R ug+rwx /opt/app-root
-RUN chown -R 1001:0 /var/lib/nginx -R
+RUN chown -R 1001:0 /var/lib/nginx && chmod -R ug+rwx /var/lib/nginx
 
 # This default user is created in the openshift/base-centos7 image
 USER 1001
