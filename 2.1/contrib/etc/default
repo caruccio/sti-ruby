@@ -1,13 +1,14 @@
 worker_processes  1;
+pid    /tmp/nginx.pid;
+error_log '/tmp/error_log';
 daemon off;
-error_log /dev/stdout info;
 
 events {
   worker_connections 1024;
 }
 
 http {
-  access_log /dev/stdout;
+  access_log '/tmp/access.log';
   upstream app {
     # Path to Puma SOCK file, as defined previously
     server unix:/tmp/puma.sock fail_timeout=0;
