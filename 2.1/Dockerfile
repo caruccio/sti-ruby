@@ -25,8 +25,8 @@ LABEL io.k8s.description="Platform for building and running Ruby 2.1 application
 # TODO: Install required packages here:
 RUN apt-get update && apt-get install nodejs libv8-dev nginx -y && \
     mkdir -p ${HOME}/.pki/nssdb && \
-	chown -R 1001:0 ${HOME}/.pki && \
-	useradd -u 1001 -r -g 0 -d ${HOME} -s /sbin/nologin -c "Default Application User" default
+    chown -R 1001:0 ${HOME}/.pki && \
+    useradd -u 1001 -r -g 0 -d ${HOME} -s /sbin/nologin -c "Default Application User" default
 
 # TODO (optional): Copy the builder files into /opt/app-root
 # COPY ./<builder_folder>/ /opt/app-root/
@@ -37,8 +37,10 @@ COPY ./.s2i/bin/ /usr/libexec/s2i
 COPY ./contrib/ /opt/app-root
 
 # TODO: Drop the root user and make the content of /opt/app-root owned by user 1001
-RUN chown -R 1001:0 /opt/app-root && chmod -R ug+rwx /opt/app-root
-RUN chown -R 1001:0 /var/lib/nginx && chmod -R ug+rwx /var/lib/nginx
+RUN chmod -R a+rwx /opt/app-root/etc && \
+    chmod -R a+rwx /var/lib/nginx && \
+    chown -R 1001:0 /opt/app-root && \
+    chown -R 1001:0 /var/lib/nginx
 
 # This default user is created in the openshift/base-centos7 image
 USER 1001

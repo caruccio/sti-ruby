@@ -1,5 +1,8 @@
 #!/bin/bash
 
+
+source /opt/app-root/etc/generate_container_user
+
 function is_puma_installed() {
   [ ! -f Gemfile.lock ] && return 1
   grep ' puma ' Gemfile.lock >/dev/null
