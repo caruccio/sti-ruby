@@ -40,7 +40,10 @@ COPY ./contrib/ /opt/app-root
 RUN chmod -R a+rwx /opt/app-root/etc && \
     chmod -R a+rwx /var/lib/nginx && \
     chown -R 1001:0 /opt/app-root && \
-    chown -R 1001:0 /var/lib/nginx
+    chown -R 1001:0 /var/lib/nginx && \
+    mkdir -p /var/log/nginx &&
+    chown -R 1001:0 /var/log/nginx && \
+    chmod -R a+rwx /var/log/nginx 
 
 # This default user is created in the openshift/base-centos7 image
 USER 1001
