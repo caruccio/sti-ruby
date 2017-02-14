@@ -41,7 +41,7 @@ RUN chmod -R a+rwx /opt/app-root/etc && \
     chmod -R a+rwx /var/lib/nginx && \
     chown -R 1001:0 /opt/app-root && \
     chown -R 1001:0 /var/lib/nginx && \
-    mkdir -p /var/log/nginx &&
+    mkdir -p /var/log/nginx && \
     chown -R 1001:0 /var/log/nginx && \
     chmod -R a+rwx /var/log/nginx 
 
