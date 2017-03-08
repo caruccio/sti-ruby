@@ -14,7 +14,7 @@ LABEL io.k8s.description="Platform for building and running Ruby 1.9 application
       io.openshift.expose-services="8080:http" \
       io.openshift.tags="builder,ruby,ruby19"
 
-RUN INSTALL_PKGS="ruby193 ruby193-ruby ruby193-ruby-devel ruby193-rubygem-rake v8314 ruby193-rubygem-rails nodejs010" && \
+RUN INSTALL_PKGS="vim ruby193 ruby193-ruby ruby193-ruby-devel ruby193-rubygem-rake v8314 ruby193-rubygem-rails nodejs010" && \
     yum install -y centos-release-scl && \
     yum install -y --setopt=tsflags=nodocs $INSTALL_PKGS && rpm -V $INSTALL_PKGS && \
     yum clean all -y
